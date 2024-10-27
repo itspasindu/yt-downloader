@@ -12,7 +12,11 @@
         <form action="/download" method="post" class="mt-4">
             <div class="form-group">
                 <label for="url">Enter YouTube Video URL:</label>
-                <input type="url" id="url" name="url" class="form-control" placeholder="https://www.youtube.com/watch?v=example" required pattern="https?://.*" title="Please enter a valid URL starting with http or https">
+                <input type="url" id="url" name="url" class="form-control" 
+       placeholder="Enter YouTube URL (e.g., https://youtu.be/xxx or https://youtube.com/watch?v=xxx)" 
+       required 
+       pattern="https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/.+" 
+       title="Please enter a valid YouTube URL">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Download Video</button>
             <button type="submit" class="btn btn-success btn-block" formaction="/download_audio">Download Audio</button>
