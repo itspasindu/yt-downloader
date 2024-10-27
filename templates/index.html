@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">YouTube Video Downloader</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/download" method="post">
+                    <div class="form-group">
+                        <label for="url">Enter YouTube Video URL:</label>
+                        <input type="url" id="url" name="url" class="form-control" 
+                               placeholder="https://www.youtube.com/watch?v=..." 
+                               required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Download Video</button>
+                    <button type="submit" class="btn btn-success btn-block" formaction="/download_audio">
+                        Download Audio Only
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div id="loading" class="text-center mt-3" style="display:none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p class="mt-2">Downloading, please wait...</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const loading = document.getElementById('loading');
+
+        form.addEventListener('submit', function() {
+            loading.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
