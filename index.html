@@ -9,14 +9,29 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">YouTube Video Downloader</h1>
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <form action="/download" method="post" class="mt-4">
             <div class="form-group">
                 <label for="url">Enter YouTube Video URL:</label>
                 <input type="url" id="url" name="url" class="form-control" 
-       placeholder="Enter YouTube URL (e.g., https://youtu.be/xxx or https://youtube.com/watch?v=xxx)" 
-       required 
-       pattern="https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/.+" 
-       title="Please enter a valid YouTube URL">
+                       placeholder="Enter YouTube URL (e.g., https://youtu.be/xxx or https://youtube.com/watch?v=xxx)" 
+                       required 
+                       pattern="https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/.+"
+                       title="Please enter a valid YouTube URL">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Download Video</button>
             <button type="submit" class="btn btn-success btn-block" formaction="/download_audio">Download Audio</button>
@@ -29,6 +44,9 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         const form = document.querySelector('form');
         const loading = document.getElementById('loading');
